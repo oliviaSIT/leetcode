@@ -28,7 +28,7 @@ public:
 class Solution {
 public:
         string reverseString(string s) {
-		size_t i = 0, j = s.length() - 1;
+		int i = 0, j = s.length() - 1;
 		while  (i < j) {
 			swap(s[i], s[j]);
 			i++;
