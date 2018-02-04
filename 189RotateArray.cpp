@@ -8,6 +8,8 @@
 
 using namespace std;
 
+/* Solution1 brute force
+
 class Solution {
 public:
         void rotate(vector<int>& nums, int k) {
@@ -25,6 +27,21 @@ public:
 		for (int i = 0; i < n - k; i++)
 			nums.pop_back();
         }
+};
+*/
+
+//solution2:use reverse
+
+class Solution {
+public:
+        void rotate(vector<int>& nums, int k) {
+		int len = nums.size();
+		k %= k;
+
+		reverse(nums.begin(), nums.begin + len - k);
+		reverse(nums.begin() + len - k, nums.end());
+		reverse(nums.begin(), nums.end());
+	}
 };
 
 int main() {
