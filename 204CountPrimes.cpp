@@ -1,11 +1,11 @@
 /*https://leetcode.com/problems/count-primes/description/
  *time: 20min
 */
-
+#include <vector>
 #include <iostream>
 #include <cmath>
 using namespace std;
-
+/*solution1 
 class Solution {
 public:
 	int countPrimes(int n) {
@@ -30,6 +30,35 @@ public:
 		}
 		return true;
 	}
+};
+*/
+
+class Solution {
+public:
+	int countPrimes(int n) {
+		vector<bool> nums(n, true);
+		nums[0] = false;
+		nums[1] = false;
+
+		int mul = 2;
+		while (mul * mul < n) {
+			if (nums[mul]) {
+				for (int i = mul * mul; i < n; i += mul) {
+					nums[i] = false;
+				}
+			}
+			mul++;
+		}
+
+		int res = 0;
+		for (int i = 2; i < n; i++) {
+			if (nums[i]) 
+				res++;
+		}
+		return res;
+        }
+
+
 };
 
 int main() {
