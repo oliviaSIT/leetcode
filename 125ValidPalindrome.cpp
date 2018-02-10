@@ -1,6 +1,7 @@
 /* https://leetcode.com/problems/valid-palindrome/description/
  * time: 25min
-*/
+ * solution: 2 pointers
+ */
 
 #include <iostream>
 #include <vector>
