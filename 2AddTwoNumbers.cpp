@@ -1,5 +1,5 @@
 /*https://leetcode.com/problems/add-two-numbers/description/
- *time:
+ *time:2h
  *solution:
  *medium
  */
@@ -19,56 +19,61 @@ struct ListNode {
 class Solution {
 public:
 	ListNode* addTwoNumbers(ListNode* l1, ListNode*, l2) {
-		vector<int> v1 = listToVector(l1);//l1 = 1->2->3 v1=123
-		vector<int> v2 = listToVector(l2);
-		vector<int> sum;
-
-		int len = max(v1.size(), v2.size());
-		if (v1.size() < v2.size()) {
-			addZero(v1, len - (int)v1.size());
-		} else {
-			addZero(v2, len - (int)v2.size());
+		if (l1 == NULL) {
+			return l2; 
 		}
 
-		int s = 0;
-		for (int i = 0; i < len; i++) {
-			if (v1[i] + v2[i] + s < 10) {
-				sum.push_back(v1[i] + v2[i] + s);
-				s = 0;
+		if (l2 == NULL) {
+			return l1; 
+		}
+
+		ListNode* dummy = new ListNode(0); 
+		ListNode* pre = dummy; 
+		int c = 0; 
+		int v; 
+		while (l1 != NULL && l2 != NULL) {
+			v = l1->val + l2->val + c; 
+			l1 = l1->next; 
+			l2 = l2->next;
+ 
+			if (v >= 10) {
+				c = v / 10; 
+				v = v % 10; 
 			} else {
-				sum.push_back(0);
-				s = 1;
+				c = 0; 
 			}
+
+			ListNode* cur = new ListNode(v); 
+			pre->next = cur; 	
+			pre = cur; 
+		}
+		
+		if (l2 != NULL) {
+			l1 = l2; 
 		}
 
-		if (s == 1)
-			sum.push_back(1);
+		while (l1 != NULL) {
+			v = l1->val + c; 
+			l1 = l1->next; 
+			if (v >= 10) {
+				c = v / 10; 
+				v = v % 10; 
+			} else {
+				c = 0; 
+			}
 
-		// make a list
-		ListNode* head = new ListNode(0);
-		ListNode* pre = head;
-		for (int i = 0; i < (int)sum.size(); i++) {
-			ListNode* cur = new ListNode(sum[i]);
-			pre->next = cur;
-			pre = cur;
+			ListNode* cur = new ListNode(v); 
+			pre->next = cur; 
+			pre = cur; 
+		
 		}
 
-		return head->next;
+		if (c != 0) {
+			ListNode* cur = new ListNode(c); 
+			pre->next = cur; 
+		}
+		
+		return dummy->next;
 	}
 
-private:
-	vector<int> listToVector(ListNode* l) {
-		vector<int> v;
-		do {
-			v.push_back(l->val);
-		} while (l->next != NULL);
-
-		return v;
-
-	}
-
-	void addZero(vector<int>& v, int n) {
-		for (int i = 0; i < n; i++)
-			v.push_back(0);
-	}
 };
