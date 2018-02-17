@@ -20,7 +20,7 @@ public:
 		ListNode* fast = head;
 
 		do {
-			if (fast == NULL || fast-> == NULL) {
+			if (fast == NULL || fast->next == NULL) { // !! must let fast == NULL be the first condition
 				return false;
 			}
 
