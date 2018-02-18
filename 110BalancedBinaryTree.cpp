@@ -5,9 +5,11 @@
  */
 
 #include <iostream>
-#include  <cstdlib>
+#include <cstdlib>
+#include <algorithm>
 
 using namespace std;
+
 struct TreeNode {
 	int val;
 	TreeNode *left;
@@ -21,11 +23,8 @@ public:
 		if (root == NULL)
 			return true;
 
-		while (root->left != NULL || root->right != NULL) {
-			if (abs(depth(root->left) - depth(root->right)) > 1)
-				return false;
-		}
-		return true;        
+		return isBalanced(root->left) && isBalanced(root-> right) && abs(depth(root->left) - depth(root->right)) <= 1;
+			        
 	}
 
 	int depth(TreeNode* root) {
