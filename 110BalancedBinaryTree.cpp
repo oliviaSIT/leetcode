@@ -1,5 +1,5 @@
 /*https://leetcode.com/problems/balanced-binary-tree/description/
- *solution:
+ *solution:36min
  *time:
  *easy
  */
