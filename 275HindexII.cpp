@@ -36,6 +36,10 @@ public:
 		return max(first, second);
 
 	}
+
+	int getIndex(int idx, int size) {
+		return size - idx;
+	}
 };
 
 
