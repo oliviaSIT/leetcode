@@ -17,7 +17,7 @@ public:
 			return INT_MAX;
 
 		int sign = 0;
-		if ((divident < 0) ^ (divisor < 0)) 
+		if ((dividend < 0) ^ (divisor < 0)) 
 			sign = 1;
 		
 		long long m = labs(dividend);
