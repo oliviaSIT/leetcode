@@ -12,6 +12,41 @@ using namespace std;
 
 class Solution {
 public:
+        vector<vector<int>> fourSum(vector<int>& nums, int target) {
+		vector<vector<int>> res;
+                sort(nums.begin(), nums.end());
+
+                for (int i = 0; i < (int)nums.size() - 3; i++) {
+                        if (i > 0 && nums[i] == nums[i - 1]) continue;
+                        for (int j = i + 1; j < (int)nums.size() - 2; j++) {
+                                if (j > i + 1 && nums[j] == nums[j - 1]) continue;
+                                int sum0 = nums[i] + nums[j];
+                                int st = j + 1, ed = (int)nums.size() - 1;
+                                while (st < ed) {
+                                        
+                                        if (sum0 + nums[st] + nums[ed] == target) {
+                                                satisfy[0] = nums[i];
+                                                satisfy[1] = nums[j];
+                                                satisfy[2] = nums[st];
+                                                satisfy[3] = nums[ed];
+                                                res.push_back(satisfy);
+                                                
+                                                while (st < ed && satisfy[2] == nums[st]) st++;
+                                                while (st < ed && satisfy[3] == nums[ed]) ed--;
+                                        } else if (sum0 + nums[st] + nums[ed] < target) {
+                                                st++;
+                                        } else ed--;
+                                }
+                        }
+                }
+
+                
+                return res;
+	}
+};
+/*
+class Solution {
+public:
 	vector<vector<int>> fourSum(vector<int>& nums, int target) {
 		vector<int> satisfy{0, 0, 0, 0};
 		vector<vector<int>> res;
@@ -43,6 +78,7 @@ public:
 		return res;
 	}
 };
+*/
 
 void print(vector<vector<int>> v) {
 	for (int i = 0; i < (int)v.size(); i++) {
