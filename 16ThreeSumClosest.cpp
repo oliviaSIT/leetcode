@@ -1,3 +1,8 @@
+/*https://leetcode.com/problems/3sum-closest/description/
+ *time:38min
+ *medium
+ */
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
