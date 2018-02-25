@@ -44,6 +44,7 @@ public:
                 return res;
 	}
 };
+
 /*
 class Solution {
 public:
@@ -72,6 +73,8 @@ public:
 			}
 		}
 
+		sort(res.begin(), res.end());
+
 		std::vector<vector<int>>::iterator it;
 		it = std::unique(res.begin(), res.end());
 		res.resize(std::distance(res.begin(), it));
@@ -93,9 +96,11 @@ int main() {
 	Solution sol;
 	vector<int> v1{1, 0, -1, 0, -2, 2};
 	vector<int> v2{1, 1, 1, 1, 1, 1};
-	int t1 = 0, t2 = 4;
-	print(sol.fourSum(v1, t1));
-	print(sol.fourSum(v2, t2));
+        vector<int> v3 {-5,-4,-3,-2,-1,0,0,1,2,3,4,5};
+	int t1 = 0, t2 = 4, t3 = 0;
+	//print(sol.fourSum(v1, t1));
+	//print(sol.fourSum(v2, t2));
+	print(sol.fourSum(v3, t3));
 
 	return 0;
 }
