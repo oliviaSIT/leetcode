@@ -22,16 +22,17 @@ public:
 	}
 
 	void help(bitset<32>& bits, vector<int>& res, int n) {
-		if (n == 0)
+		if (n == 0) {
+			cout << bits << endl;
 			res.push_back(bits.to_ulong());
-		else {
+		} else {
 			help(bits, res, n - 1);
 			bits.flip(n - 1);
 			help(bits, res, n - 1);
 		}
 	}
 };
-
+/*
 class Solution {
 public:
 	vector<int> grayCode(int n) {
@@ -55,13 +56,13 @@ public:
 		return res;
 	}
 };
-
+*/
 int main() {
 	Solution sol;
 	vector<int> res = sol.grayCode(3);
-	for (int i = 0; i < (int)res.size(); i++)
-		cout << res[i] << ' ';
-
-	cout << endl;
+//	for (int i = 0; i < (int)res.size(); i++)
+//		cout << res[i] << ' ';
+//
+//	cout << endl;
 	return 0;
 }
