@@ -6,8 +6,8 @@
 
 class Solution {
 public:
-    bool isMatch(const char *s, const char *p) {
-        int m = strlen(s), n = strlen(p);
+    bool isMatch(string s, string p) {
+        int m = s.length(), n = p.length();
         vector<vector<bool>> dp(m+1, vector<bool>(n+1,false));
         dp[0][0] = true;
         
