@@ -14,6 +14,31 @@ using namespace std;
 class Solution {
 public:
 	int lengthOfLongestSubstring(string s) {
+		int maxLen = 0, curLen = 0, st = 0;
+		unordered_map<char, int> hash;		
+
+		for (int i = 0; i < (int)s.size(); i++) {
+			if (hash.count(s[i])) {
+				for (int j = st; j < hash[s[i]]; j++)
+					hash.erase(s[j]);
+
+				st = hash[s[i]] + 1;
+				curLen = i - hash[s[i]];
+			} else {
+				curLen++;	
+			}
+
+			hash[s[i]] = i;
+			maxLen = max(maxLen, curLen);
+		}
+
+		return maxLen;
+	}
+};
+/*
+class Solution {
+public:
+	int lengthOfLongestSubstring(string s) {
 		if (s.length() < 2)
 			return s.length();
 
@@ -40,7 +65,7 @@ public:
 		return res;
 	}
 };
-
+*/
 int main() {
 	Solution sol;
 	string s1 = "abcabcbb", s2 = "bbbbb", s3 = "pwwkew";
